@@ -13,7 +13,7 @@ while True:
     # flip = cv2.flip(frame, 1)
     # cv2.imshow("Quizzmaster", flip)
     grayImage = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 50, 220, cv2.THRESH_BINARY)
+    (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 100, 180, cv2.THRESH_BINARY)
     cv2.imshow("Quizzmaster", blackAndWhiteImage)
 
     k = cv2.waitKey(1)
