@@ -26,21 +26,29 @@ while True:
         # filter out weird characters for festival
         text = text.replace("\"", "")
         text = text.replace("\n", " ")
-        question_idx = text.find("Q:")
-        answer_idx = text.find("A:")
-        question = text[question_idx:answer_idx]
-        answer = text[answer_idx::]
 
-        print("--------- text ---------")
-        print(text)
-        print("------------------------")
-        print("------- question -------")
-        print(question)
-        print("------------------------")
-        print("-------- answer --------")
-        print(answer)
-        print("------------------------")
-        os.system("echo \"" + text + "\" | festival --tts")
+        question_idx_1  = text.find("Q:")
+        answer_idx_1    = text.find("A:")
+        question_idx_2  = text.find("Q:", answer_idx_1)
+        answer_idx_2    = text.find("A:", question_idx_2)
+        question1   = text[question_idx_1:answer_idx_1]
+        answer1     = text[answer_idx_1:question_idx_2]
+        question2   = text[question_idx_2:answer_idx_2]
+        answer2     = text[answer_idx_2::]
+
+        # print("--------- text ---------")
+        # print(text)
+        # print("------------------------")
+        # print("------- question -------")
+        # print(question)
+        # print("------------------------")
+        # print("-------- answer --------")
+        # print(answer)
+        # print("------------------------")
+        print(question1)
+        os.system("echo \"" + question1 + "\" | festival --tts")
+        print(question2)
+        os.system("echo \"" + question2 + "\" | festival --tts")
 
     elif k % 256 == 27: # escape
         break
